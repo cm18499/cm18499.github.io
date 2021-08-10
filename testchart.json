@@ -1,0 +1,33 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/RDeconomist/observatory/main/DATA_BP_C1_formatted.csv"
+    },
+    "width": {"step": 10},
+    "height": 300,
+    "mark": "bar",
+    "encoding": {
+      "column": {"field": "Quarter", "type": "ordinal", "spacing": 0},
+      "y": {
+        "aggregate": "sum",
+        "field": "Value",
+        "title": "GDP growth, quarter on quarter (%)",
+        "scale": {"domain": [-20, 20]}
+      },
+      "x": {
+        "field": "Nation",
+        "axis": {"title": "", "labelColor": "white", "ticks": false},
+        "sort": "-y"
+      },
+      "color": {
+        "field": "Nation",
+        "scale": {"range": ["#122b39", "#00a767", "#179fdb", "#e6224b"]}
+      },
+      "tooltip": [
+        {"field": "Quarter", "type": "ordinal"},
+        {"field": "Value", "type": "quantitative", "title": "GDP growth (%)"},
+        {"field": "Nation", "type": "nominal"}
+      ]
+    },
+    "config": {"view": {"stroke": "transparent"}, "axis": {"domainWidth": 1}}
+  }
